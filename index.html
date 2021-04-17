@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reproductor de videos</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Roboto&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <main class="main">
+      <h1 class="main__title">~ Reproductor de videos ~</h1>
+      <div
+        class="drop__container"
+        id="dropContainerEl"
+        ondrop="dropHandler(event);"
+        ondragover="dragOverHandler(event);"
+      >
+        <form class="form">
+          <label class="form__label" for="file">
+            <strong>Seleccione un fichero</strong>
+            <span> o arrastrelo aquí</span><br />
+            <small>*Sólo permitido ficheros de tipo video</small>
+          </label>
+          <input
+            class="form__file"
+            type="file"
+            name="file"
+            id="file"
+            onchange="handleFileSelected(event)"
+            accept="video/*"
+          />
+        </form>
+      </div>
+      <div class="video__container">
+        <p class="video__overlay" id="videoOverlayEl">El video se esta cargando, espere unos minutos...</p>
+        <figure>
+          <video class="video" id="videoEl" autoplay controls loop poster="images/preview.svg" width="500">
+            No se puede reproducir el video en tu navegador. Inténtalo en otro diferente.
+          </video>
+        </figure>
+
+        <div class="button__toolbar">
+          <button type="button" class="material-icons button__action" title="Reproducir" onclick="playVideo()">
+            play_arrow
+          </button>
+          <button type="button" class="material-icons button__action" title="Parar" onclick="pauseVideo()">
+            pause
+          </button>
+          <button
+            type="button"
+            class="material-icons button__action"
+            title="Bajar el volumen"
+            onclick="changeVolume('down')"
+          >
+            volume_down
+          </button>
+          <button
+            type="button"
+            class="material-icons button__action"
+            title="Subir el volumen"
+            onclick="changeVolume('up')"
+          >
+            volume_up
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/uploadFile.js"></script>
+    <script src="js/videoActions.js"></script>
+  </body>
+</html>
